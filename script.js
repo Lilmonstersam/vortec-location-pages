@@ -4,6 +4,45 @@ const enquiryStatus = document.querySelector('#form-status');
 const caseScroller = document.querySelector('#case-scroll');
 const casePrev = document.querySelector('[data-case-prev]');
 const caseNext = document.querySelector('[data-case-next]');
+const siteHeader = document.querySelector('.site-header');
+const headerNav = document.querySelector('#site-nav');
+const menuToggle = document.querySelector('.menu-toggle');
+
+function closeHeaderMenu() {
+  headerNav.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Open menu');
+  headerNav.querySelectorAll('details[open]').forEach((menu) => { menu.open = false; });
+}
+
+menuToggle.addEventListener('click', () => {
+  const open = !headerNav.classList.contains('is-open');
+  if (!open) return closeHeaderMenu();
+  headerNav.classList.add('is-open');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  menuToggle.setAttribute('aria-label', 'Close menu');
+});
+
+headerNav.querySelectorAll('.header-menu').forEach((menu) => {
+  menu.addEventListener('toggle', () => {
+    if (menu.open) headerNav.querySelectorAll('.header-menu').forEach((other) => { if (other !== menu) other.open = false; });
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!siteHeader.contains(event.target)) closeHeaderMenu();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeHeaderMenu();
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeHeaderMenu();
+});
+
+document.querySelector('.country-switcher').addEventListener('change', (event) => {
+  const code = event.target.value;
+  window.location.href = code === 'au' ? 'https://vortecglobal.com/' : `https://vortecglobal.com/?code=${encodeURIComponent(code)}`;
+});
 
 let enquiryTrigger = null;
 

@@ -28,18 +28,33 @@ h3{font-size:19px;color:var(--ink)}
 .btn-text:hover{text-decoration:underline;text-underline-offset:4px}
 .arrow{font:700 18px/1 Rubik,sans-serif}
 
-/* The reference has a pale utility strip, white main header and dark page index. */
-.utility{background:#f5f5f5;color:#393939;border-bottom:1px solid #e6e6e6;font-size:12px}
-.utility .wrap{display:flex;align-items:center;justify-content:space-between;min-height:37px;gap:16px}
-.utility a{font-weight:700;color:var(--orange-text)}
-.site-header{position:sticky;top:0;z-index:30;background:#fff;box-shadow:0 4px 12px #0000000c}
-.header-inner{height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-.logo img{width:170px;height:auto}
-.desktop-nav{display:flex;align-items:center;gap:26px;margin-left:auto}
-.nav-link{font-size:13px;font-weight:700;color:var(--ink)}
-.nav-link:hover{color:var(--orange-text)}
-.header-cta{font-size:12px;min-height:42px;padding:9px 16px}
-.mobile-menu{display:none}
+/* Header follows the hydromulching-services reference navigation. */
+.site-header{position:sticky;top:0;z-index:30;background:#fff;box-shadow:0 1px 0 #00000014}
+.header-inner{position:relative;width:min(1200px,calc(100% - 40px));height:100px;display:flex;align-items:center;gap:22px}
+.header-logo{flex:none}
+.header-logo img{width:194px;height:41px;object-fit:contain}
+.header-nav{display:flex;align-items:stretch;justify-content:center;margin-left:auto;height:100%;font-size:15px;font-weight:600}
+.header-link,.header-menu>summary{display:flex;align-items:center;gap:7px;height:100%;padding:0 16px;color:var(--ink);cursor:pointer;white-space:nowrap}
+.header-link:hover,.header-link:focus-visible,.header-menu:hover>summary,.header-menu[open]>summary{color:var(--orange)}
+.header-menu{position:relative}
+.header-menu>summary{list-style:none}
+.header-menu>summary::-webkit-details-marker{display:none}
+.menu-chevron{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.nav-dropdown{display:none;position:absolute;top:100%;z-index:40;background:#fff;box-shadow:0 10px 24px #0000001f;border-top:2px solid var(--orange)}
+.header-menu[open]>.nav-dropdown{display:block}
+.products-menu{position:static}
+.products-menu[open]>.mega-menu{display:grid}
+.mega-menu{left:0;right:0;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding:24px 26px 28px}
+.menu-group{min-width:0}
+.menu-group-title{display:block;min-height:46px;color:var(--orange);font-size:16px;font-weight:700;line-height:1.35}
+.menu-group>a:not(.menu-group-title){display:flex;align-items:center;gap:8px;min-height:43px;padding:3px 0;color:var(--ink);font-size:13px;font-weight:500;line-height:1.25}
+.menu-group>a:not(.menu-group-title):hover,.small-menu a:hover{color:var(--orange)}
+.menu-group img{width:42px;height:36px;object-fit:contain;flex:none}
+.small-menu{left:0;min-width:185px;padding:8px 0}
+.small-menu a{display:block;padding:10px 16px;font-size:14px;white-space:nowrap}
+.country-switcher{flex:none;width:58px;height:32px;padding:0 3px;border:1px solid #d1d1d1;border-radius:0;background:#fff;color:var(--ink);font:600 13px Rubik,sans-serif}
+.menu-toggle{display:none}
+@media(min-width:901px){.header-menu:hover>.nav-dropdown,.header-menu:focus-within>.nav-dropdown{display:block}.products-menu:hover>.mega-menu,.products-menu:focus-within>.mega-menu{display:grid}}
 
 /* Compact photographed title bar, as on hydromulching-services. */
 .hero{position:relative;isolation:isolate;background:var(--ink);color:#fff}
@@ -50,12 +65,12 @@ h3{font-size:19px;color:var(--ink)}
 .crumbs a:hover{text-decoration:underline}
 .hero h1{font-size:clamp(28px,3.8vw,44px);line-height:1.2;margin:0;color:#fff}
 .hero h1 span{color:#fff}
-.page-nav{position:sticky;top:82px;z-index:25;background:var(--ink);border-bottom:3px solid var(--orange);box-shadow:0 8px 20px #00000024}
+.page-nav{position:sticky;top:100px;z-index:25;background:var(--ink);border-bottom:3px solid var(--orange);box-shadow:0 8px 20px #00000024}
 .page-nav .wrap{display:flex;align-items:center;gap:21px;min-height:52px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
 .page-nav span{font-size:11px;font-weight:800;color:var(--orange);letter-spacing:.14em;text-transform:uppercase;flex:none}
 .page-nav a{color:#fff;font-size:13px;font-weight:600;border-bottom:2px solid transparent;padding:5px 0;flex:none}
 .page-nav a:hover,.page-nav a:focus-visible{border-color:var(--orange)}
-main [id]{scroll-margin-top:150px}
+main [id]{scroll-margin-top:170px}
 
 /* Single white overview panel with the reference's orange left rule. */
 .intro{background:#fff}
@@ -165,7 +180,23 @@ footer p{font-size:12px;max-width:500px;line-height:1.5;margin:12px 0 0}
 footer nav{display:flex;gap:20px;font-size:13px;font-weight:600}
 footer a:hover{color:var(--orange-text)}
 
-@media(max-width:1050px){.desktop-nav{gap:15px}.page-nav .wrap{gap:15px}}
-@media(max-width:780px){.header-inner{height:66px}.logo img{width:155px}.desktop-nav,.header-cta{display:none}.mobile-menu{display:block;position:relative;margin-left:auto}.mobile-menu summary{list-style:none;cursor:pointer;padding:8px 12px;border:1px solid var(--line);font-size:13px;font-weight:700}.mobile-menu summary::-webkit-details-marker{display:none}.mobile-menu nav{position:absolute;right:0;top:42px;min-width:200px;display:grid;padding:8px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 24px #0002}.mobile-menu nav a{padding:9px 10px;font-size:13px;font-weight:700}.page-nav{top:66px}.section{padding:56px 0}.section-head{display:block}.section-head>p{max-width:700px;margin-top:12px}.intro-grid,.application-grid,.faq-layout{grid-template-columns:1fr;gap:22px}.intro-grid{padding:25px}.application-photo{height:320px}.path-grid{grid-template-columns:1fr}.path-card{min-height:0}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.final-inner{display:block}.final-actions{justify-content:flex-start;margin-top:24px}main [id]{scroll-margin-top:130px}}
-@media(max-width:560px){body{font-size:15px}.utility{display:none}.wrap{width:min(var(--max),calc(100% - 32px))}.hero-inner{min-height:190px}.hero h1{font-size:28px}.page-nav .wrap{gap:16px}.intro-grid{padding:22px;border-left-width:4px}.intro-actions .btn{width:100%}.application-photo{height:230px}.application-list,.product-grid{grid-template-columns:1fr}.path-card{padding:23px}.path-card h3{font-size:22px}.product-image{height:220px}.proof-card{flex-basis:min(84vw,330px)}.proof-controls span{max-width:160px}.enquiry-shell{padding:23px 18px 28px}.enquiry-dialog h2{font-size:26px}.form-grid{grid-template-columns:1fr}.final-actions .btn{width:100%}.footer-inner{display:block}footer nav{flex-wrap:wrap;margin-top:24px}}
+@media(max-width:1050px){.header-link,.header-menu>summary{padding-inline:10px}.page-nav .wrap{gap:15px}}
+@media(max-width:900px){
+  .header-inner{height:70px}
+  .header-logo img{width:165px;height:auto}
+  .menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:40px;height:40px;margin-left:auto;padding:0;border:0;background:transparent}
+  .menu-toggle span{display:block;width:23px;height:2px;background:var(--ink)}
+  .header-nav{display:none;position:absolute;top:100%;left:-20px;right:-20px;z-index:40;height:auto;max-height:calc(100vh - 70px);overflow-y:auto;margin:0;padding:10px 20px 22px;background:#fff;border-top:1px solid var(--line);box-shadow:0 15px 24px #00000024}
+  .header-nav.is-open{display:flex;flex-direction:column;align-items:stretch}
+  .header-link,.header-menu>summary{height:auto;min-height:49px;padding:12px 4px;border-bottom:1px solid var(--line);font-size:16px}
+  .nav-dropdown,.header-menu[open]>.nav-dropdown{position:static;box-shadow:none;border:0}
+  .header-menu[open]>.mega-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mega-menu{padding:20px 4px;gap:26px}
+  .small-menu{padding:4px 12px}
+  .small-menu a{padding:10px 4px}
+  .menu-group-title{min-height:0;margin-bottom:7px}
+  .page-nav{top:70px}
+  .section{padding:56px 0}.section-head{display:block}.section-head>p{max-width:700px;margin-top:12px}.intro-grid,.application-grid,.faq-layout{grid-template-columns:1fr;gap:22px}.intro-grid{padding:25px}.application-photo{height:320px}.path-grid{grid-template-columns:1fr}.path-card{min-height:0}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.final-inner{display:block}.final-actions{justify-content:flex-start;margin-top:24px}main [id]{scroll-margin-top:140px}
+}
+@media(max-width:560px){body{font-size:15px}.wrap{width:min(var(--max),calc(100% - 32px))}.header-inner{width:calc(100% - 32px)}.header-nav{left:-16px;right:-16px;padding-inline:16px}.header-logo img{width:150px}.country-switcher{width:52px}.header-menu[open]>.mega-menu{grid-template-columns:1fr}.hero-inner{min-height:190px}.hero h1{font-size:28px}.page-nav .wrap{gap:16px}.intro-grid{padding:22px;border-left-width:4px}.intro-actions .btn{width:100%}.application-photo{height:230px}.application-list,.product-grid{grid-template-columns:1fr}.path-card{padding:23px}.path-card h3{font-size:22px}.product-image{height:220px}.proof-card{flex-basis:min(84vw,330px)}.proof-controls span{max-width:160px}.enquiry-shell{padding:23px 18px 28px}.enquiry-dialog h2{font-size:26px}.form-grid{grid-template-columns:1fr}.final-actions .btn{width:100%}.footer-inner{display:block}footer nav{flex-wrap:wrap;margin-top:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
