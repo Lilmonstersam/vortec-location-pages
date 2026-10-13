@@ -21,7 +21,7 @@ The visual reference is `../hydromulching-services/index.html`: Rubik typography
 
 The case studies sit in a horizontally scrollable row with fixed-height cards, visible scrollbar and previous/next buttons. The page has no build step.
 
-The seven product cards use the updated transparent PNGs supplied in `../../images/products`, copied into this mockup's `assets` directory. Every image sits in the same fixed-height, centred panel and scales to fit without cropping.
+The seven product cards use the updated transparent PNGs supplied in `../../images/products`, copied into this mockup's `assets` directory. Every image sits in the same fixed-height, centred panel and scales to fit without cropping. Machine selection appears before Applications, and its VX and VR comparison buttons jump to separate groups in the equipment range.
 
 ## Published source pages used
 
