@@ -1,6 +1,7 @@
-const enquiryDialog = document.querySelector('#service-enquiry');
-const enquiryForm = document.querySelector('#service-form');
+const enquiryDialog = document.querySelector('#equipment-enquiry');
+const enquiryForm = document.querySelector('#equipment-form');
 const enquiryStatus = document.querySelector('#form-status');
+const productSelect = document.querySelector('#product-select');
 const caseScroller = document.querySelector('#case-scroll');
 const casePrev = document.querySelector('[data-case-prev]');
 const caseNext = document.querySelector('[data-case-next]');
@@ -50,6 +51,7 @@ document.querySelectorAll('[data-open-enquiry]').forEach((button) => {
   button.addEventListener('click', () => {
     enquiryTrigger = button;
     enquiryStatus.textContent = '';
+    productSelect.value = button.dataset.product || 'Help me choose';
     enquiryDialog.showModal();
     document.body.classList.add('dialog-open');
     enquiryDialog.querySelector('input[name="First Name"]').focus();
@@ -74,8 +76,8 @@ enquiryForm.addEventListener('submit', (event) => {
   if (!enquiryForm.reportValidity()) return;
 
   const details = [...new FormData(enquiryForm)].map(([label, value]) => `${label}: ${String(value).trim()}`);
-  const subject = 'Melbourne hydromulching service enquiry';
-  const body = ['Hello Vortec,', '', 'I would like to enquire about a service for my project.', '', ...details, '', 'Please contact me to discuss the scope.'].join('\n');
+  const subject = `Melbourne equipment quote request: ${productSelect.value}`;
+  const body = ['Hello Vortec,', '', 'I would like a quote for a hydroseeder or erosion control machine.', '', ...details, '', 'Please contact me to discuss the right configuration and pricing.'].join('\n');
   const draftUrl = `mailto:sales@vortecglobal.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   enquiryStatus.textContent = 'Your email app should open with a draft. Send it to complete your enquiry. ';
